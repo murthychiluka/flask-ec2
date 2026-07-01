@@ -58,3 +58,11 @@ Full CRUD API (Create, Read, Update, Delete)
 
 # Delete task
 curl -X DELETE http://3.236.198.195:5000/tasks/1
+*********************************************88
+
+Gunicorn is running with nohup, you don't need to run python3 app.py anymore.
+Here's the simple difference:
+Command           Use case                          Stays alive after SSH closes?        Survives reboot?     
+python3 app.py    Quick testing only              ❌                                       No❌    
+Nonohup gunicorn ... &Proper background run        ✅ Yes                                  ❌ No
+systemd service     Production grade                ✅ Yes                                ✅ Yes
