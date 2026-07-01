@@ -1,0 +1,28 @@
+Create the systemd service file
+vi /etc/systemd/system/flaskapp.service
+
+[Unit]
+Description=Flask App with Gunicorn
+After=network.target
+
+[Service]
+User=root
+WorkingDirectory=/root/flaskapp
+Environment="DB_HOST=<RDS-ENDPOINT>"
+Environment="DB_USER=<your-username>"
+Environment="DB_PASS=<your-password>"
+Environment="DB_NAME=myapp"
+ExecStart=/usr/local/bin/gunicorn -w 2 -b 0.0.0.0:5000 app:app
+Restart=always
+
+[Install]
+WantedBy=multi-user.target
+**********************************
+# Reload systemd to pick up the new file
+systemctl daemon-reload
+
+# Enable it to auto-start on reboot
+systemctl enable flaskapp
+
+# Start it now
+systemctl start flaskapp
