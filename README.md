@@ -48,5 +48,13 @@ curl -X PUT http://3.236.198.195:5000/tasks/1 \
   -H "Content-Type: application/json" \
   -d '{"done": true}'
 
+
+  What's running:
+
+Flask app on EC2 (3.236.198.195:5000)
+Gunicorn (2 workers) running in background
+MySQL RDS connected and working
+Full CRUD API (Create, Read, Update, Delete)
+
 # Delete task
 curl -X DELETE http://3.236.198.195:5000/tasks/1
