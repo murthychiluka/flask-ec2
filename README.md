@@ -2,7 +2,9 @@
 
 
 sudo yum update -y
+
 sudo yum install -y python3 python3-pip git mariadb105-server
+
 pip3 install flask  pymysql
 ************************************
 Create the Database Table
